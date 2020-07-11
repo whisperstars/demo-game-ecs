@@ -1,9 +1,10 @@
 import React, {FC} from 'react';
 
 export const Game: FC = () => {
+  const a = 1;
   return (
-    <div>
-      Game
+    <div className='bg'>
+      {a}
     </div>
   );
 };
