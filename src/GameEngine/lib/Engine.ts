@@ -2,6 +2,7 @@ import {Entity} from './Entity';
 import {EntityId} from './types';
 import {fastSplice} from './utils';
 import {System} from './System';
+import {Render} from '../Components/Render';
 
 export class Engine {
   entities: Array<Entity>;
@@ -89,7 +90,13 @@ export class Engine {
     }
   }
   
-  getEntitiesForRender() {
-    return [...this.entities];
+  getEntitiesForRender(): Array<{width: number, height: number, x: number, y: number, sprite: string, id: string}> {
+    return this.entities.filter((entity) => {
+      return entity.hasComponents([Render]);
+    }).map((entity) => {
+      const rendererComponent = entity.getComponent(Render) as Render;
+      
+      return {...rendererComponent};
+    })
   }
 }

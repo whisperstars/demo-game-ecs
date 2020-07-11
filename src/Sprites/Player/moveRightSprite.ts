@@ -6,7 +6,7 @@ import img_player_move_right_5 from "../../Images/player/move_right/player_05.pn
 import img_player_move_right_6 from "../../Images/player/move_right/player_06.png";
 
 
-export const moveRight = [
+export const moveRightSprite = [
     img_player_move_right_1,
     img_player_move_right_2,
     img_player_move_right_3,

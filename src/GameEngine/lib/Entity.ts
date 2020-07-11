@@ -30,22 +30,31 @@ export class Entity {
   }
   
   removeComponent(component: ComponentInterface) {
-    if (!this.components[component.name]) {
+    // @ts-ignore
+    const cmp = new component;
+    
+    if (!this.components[cmp.name]) {
       return;
     }
     
-    delete this.components[component.name];
+    delete this.components[cmp.name];
   
     this.components = {...this.components};
   }
   
   hasComponents(components: Array<ComponentInterface>) {
     return !components.some((component) => {
-      return !this.components[component.name];
+      // @ts-ignore
+      const cmp = new component;
+      
+      return !this.components[cmp.name];
     });
   }
-  
-  getComponent(component: ComponentInterface) {
-    return this.components[component.name];
+
+  getComponent<C>(component: ComponentInterface): C {
+    // @ts-ignore
+    const cmp = new component;
+    
+    return this.components[cmp.name] as unknown as C;
   }
 }

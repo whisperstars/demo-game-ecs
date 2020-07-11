@@ -1,4 +1,5 @@
 import {ComponentInterface} from '../lib/types';
+import {Component} from '../lib/Component';
 
 export class Gravity implements ComponentInterface{
   name = 'gravity';

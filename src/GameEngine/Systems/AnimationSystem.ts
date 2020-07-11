@@ -10,7 +10,7 @@ export class AnimationSystem extends System {
     } else {
       if (entity.hasComponents([Sprite])) {
         const {sprites} = <Sprite>entity.getComponent(Sprite);
-        entity.addComponent(new Sprite(0, sprites));
+        entity.addComponent(new Sprite(0, 'idle', sprites));
       }
       
       return false;
@@ -19,9 +19,15 @@ export class AnimationSystem extends System {
   
   update(entity: Entity) {
     const {currentIndex, sprites} = <Sprite>entity.getComponent(Sprite);
+    const {type} = <Animation>entity.getComponent(Animation);
     
-    const nextSprite = sprites.length > currentIndex + 1 ? 0 : currentIndex + 1;
+    if (!sprites[type]) {
+      throw new Error('there isn\'t spriteSheet with type: {' + type + '}');
+    }
     
-    entity.addComponent(new Sprite(nextSprite, sprites));
+    // @ts-ignore
+    const nextSprite = sprites[type].length > currentIndex + 1 ? currentIndex + 1 : 0;
+    
+    entity.addComponent(new Sprite(nextSprite, type, sprites));
   }
 }
