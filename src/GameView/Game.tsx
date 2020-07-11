@@ -7,16 +7,16 @@ import img_player_2 from "../Images/arrow/right_arrow.png";
 
 export const Game: FC = () => {
   return (
-  <div className='wr'>
-    <div className='bg'>
+    <div className='wr'>
+      <div className='bg'>
         <Platform />
         <Player />
-    </div>
-    <div className='el_arrows'>
+        <Ground />
+      </div>
+      <div className='el_arrows'>
         <img src={img_player} className='l_arrow'/>
         <img src={img_player_2} className='r_arrow'/>
+      </div>
     </div>
-    <Ground />
-  </div>
   );
 };
