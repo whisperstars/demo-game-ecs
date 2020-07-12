@@ -30,7 +30,7 @@ export class World {
   
   setup() {
     const groundEntity = new Entity('ground', [
-      new Position(0, document.body.offsetHeight - 1),
+      new Position(0, 639),
       new Size(document.body.offsetWidth, 80),
       new Sprite(0, 'idle',[groundSprite]),
       new Solid(),
@@ -44,7 +44,7 @@ export class World {
     ]);
   
     const playerEntity = new Entity('player', [
-      new Position(320, 390 - 115),
+      new Position(320, 390 - 113),
       new Size(80, 125),
       new Sprite(0, 'idle', {
         idle: [idleLeft],

@@ -3,6 +3,7 @@ import React, {
   useEffect,
   useRef,
   useState,
+  KeyboardEvent,
 } from 'react';
 import img_player from "../Images/arrow/left_arrow.png";
 import img_player_2 from "../Images/arrow/right_arrow.png";
@@ -42,8 +43,30 @@ export const Game: FC = () => {
     }
   };
   
+  const startMove = (e: KeyboardEvent) => {
+    const world = worldRef.current;
+    if (world) {
+      if (e.keyCode === 37) {
+        world.fireEvent(GameEvents.mouseDown, -1);
+      } else if (e.keyCode === 39) {
+        world.fireEvent(GameEvents.mouseDown, 1);
+      }
+    }
+  };
+  
+  const endMove = (e: KeyboardEvent) => {
+    const world = worldRef.current;
+    if (world) {
+      if (e.keyCode === 37) {
+        world.fireEvent(GameEvents.mouseUp, 0);
+      } else if (e.keyCode === 39) {
+        world.fireEvent(GameEvents.mouseUp, 0);
+      }
+    }
+  };
+  
   return (
-    <div className='wr'>
+    <div className='wr' onKeyDown={startMove} onKeyUp={endMove} tabIndex={0}>
       <div className='bg'>
         <div className="tree1" style={{left: 470, top: 410, transform: 'rotate(8deg)', width: 300, opacity: 0.8}}/>
         <div className="tree1" style={{left: 1270, top: 380, transform: 'rotate(8deg)', width: 300, opacity: 0.8}}/>

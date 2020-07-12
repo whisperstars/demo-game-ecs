@@ -19,8 +19,8 @@ body {
     -o-background-size: 100%; /* Opera 9.6+ */
     background-size: 100%; /* Современные браузеры */
     background-repeat: no-repeat;
-    //height: 100vh;
-    min-height: calc(100vh - 80px);
+    min-height: 100vh;
+    background-position: 0 -120px;
   }
 
   .el_player {
@@ -44,12 +44,23 @@ body {
   }
 
   .el_arrows {
-    margin-top: -45px;
     z-index: 3;
-    position: relative;
-  }
-  .el_arrows img {
-    height: 40px;
+    top: 560px;
+    left: 25px;
+    position: absolute;
+
+    background-color: rgba(250,255,246,0.7);
+    padding: 10px;
+    width: 90px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 25px;
+
+    img {
+      height: 40px;
+      cursor: pointer;
+    }
   }
 
   .el_ground {
