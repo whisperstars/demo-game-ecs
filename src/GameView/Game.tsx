@@ -45,6 +45,9 @@ export const Game: FC = () => {
   return (
     <div className='wr'>
       <div className='bg'>
+        <div className="tree1" style={{left: 470, top: 410, transform: 'rotate(8deg)', width: 300, opacity: 0.8}}/>
+        <div className="tree1" style={{left: 1270, top: 380, transform: 'rotate(8deg)', width: 300, opacity: 0.8}}/>
+        <div className="tree1" style={{left: 1265, top: 440, transform: 'rotate(-12deg)', width: 270, opacity: 0.8}}/>
         {
           gameObjects.map(({id, ...other}) => (
             <GameObjectView
@@ -56,10 +59,12 @@ export const Game: FC = () => {
         {/*<Platform />
         <Player />
         <Ground />*/}
+        <div className="tree1" />
+        <div className="tree2" />
       </div>
       <div className='el_arrows'>
-        <img src={img_player} className='l_arrow' onMouseDown={() => onMouseDown(-1)} onMouseUp={onMouseUp}/>
-        <img src={img_player_2} className='r_arrow' onMouseDown={() => onMouseDown(1)} onMouseUp={onMouseUp}/>
+        <img src={img_player} className='l_arrow' onMouseDown={() => onMouseDown(-1)} onMouseUp={onMouseUp} alt='left'/>
+        <img src={img_player_2} className='r_arrow' onMouseDown={() => onMouseDown(1)} onMouseUp={onMouseUp} alt='right'/>
       </div>
     </div>
   );

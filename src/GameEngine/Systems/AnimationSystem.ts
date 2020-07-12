@@ -2,6 +2,7 @@ import {System} from '../lib/System';
 import {Entity} from '../lib/Entity';
 import {Sprite} from '../Components/Sprite';
 import {Animation} from '../Components/Animation';
+import {PlayerSide} from '../Components/PlayerSide';
 
 export class AnimationSystem extends System {
   test(entity: Entity) {
@@ -10,7 +11,12 @@ export class AnimationSystem extends System {
     } else {
       if (entity.hasComponents([Sprite])) {
         const {sprites} = <Sprite>entity.getComponent(Sprite);
-        entity.addComponent(new Sprite(0, 'idle', sprites));
+        if (entity.hasComponents([PlayerSide])) {
+          const {side} = <PlayerSide>entity.getComponent(PlayerSide);
+          entity.addComponent(new Sprite(0, side > 0 ? 'idleRight' : 'idleLeft', sprites));
+        } else {
+          entity.addComponent(new Sprite(0, 'idle', sprites));
+        }
       }
       
       return false;

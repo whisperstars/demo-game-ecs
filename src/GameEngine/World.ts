@@ -13,9 +13,11 @@ import {Player} from './Components/Player';
 
 import groundSprite from '../Images/img_ground.jpg';
 import platformSprite from '../Images/img_platform.jpg';
-import idle from '../Images/player/idle/player_13.png';
+import idleRight from '../Images/player/idle/player_13.png';
+import idleLeft from '../Images/player/idle/player_14.png';
 import {moveLeftSprite} from '../Sprites/Player/moveLeftSprite';
 import {moveRightSprite} from '../Sprites/Player/moveRightSprite';
+import {PlayerSide} from './Components/PlayerSide';
 
 export class World {
   engine: Engine;
@@ -28,29 +30,32 @@ export class World {
   
   setup() {
     const groundEntity = new Entity('ground', [
-      new Position(0, 641),
-      new Size(640, 64),
+      new Position(0, document.body.offsetHeight - 1),
+      new Size(document.body.offsetWidth, 80),
       new Sprite(0, 'idle',[groundSprite]),
       new Solid(),
     ]);
   
     const platformEntity = new Entity('platform', [
-      new Position(300, 250),
-      new Size(600, 120),
+      new Position(220, 390),
+      new Size(600, 100),
       new Sprite(0, 'idle',[platformSprite]),
       new Solid(),
     ]);
   
     const playerEntity = new Entity('player', [
-      new Position(320, 138),
+      new Position(320, 390 - 115),
       new Size(80, 125),
       new Sprite(0, 'idle', {
-        idle: [idle],
+        idle: [idleLeft],
+        idleLeft: [idleLeft],
+        idleRight: [idleRight],
         moveLeft: moveLeftSprite,
         moveRight: moveRightSprite,
       }),
       new Solid(),
       new Player(),
+      new PlayerSide(1),
     ]);
     
     this.engine.addEntity(groundEntity);

@@ -3,10 +3,13 @@
   padding: 0;
 }
 
+body {
+  overflow: hidden;
+}
+
 .App {
   div {
     color: red;
-    overflow: hidden;
   }
 
   .bg {
@@ -42,6 +45,8 @@
 
   .el_arrows {
     margin-top: -45px;
+    z-index: 3;
+    position: relative;
   }
   .el_arrows img {
     height: 40px;
@@ -59,5 +64,38 @@
     transform: rotate(180deg);
     display: block;
 
+  }
+
+  .gameObjectView {
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
+
+  .tree1, .tree2 {
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
+
+  .tree1 {
+    background-image: url('./Images/tree/tree1.png');
+    left: 55px;
+    top: 454px;
+    width: 197px;
+    height: 100%;
+    transform: rotate(-8deg);
+    opacity: 0.7;
+  }
+
+  .tree2 {
+    background-image: url('./Images/tree/tree2.png');
+    left: 819px;
+    top: 353px;
+    width: 460px;
+    background-size: 100%;
+    height: 100%;
+    transform: rotate(4deg);
+    opacity: 0.9;
   }
 }
