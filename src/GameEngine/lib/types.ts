@@ -5,7 +5,6 @@ export type EntityId = string;
 export type idGenerator = () => EntityId;
 
 export interface ComponentInterface {
-  name: string;
 }
 
 export interface SystemInterface {

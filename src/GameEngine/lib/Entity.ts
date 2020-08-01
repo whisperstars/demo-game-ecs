@@ -3,10 +3,11 @@ import {
   EntityId,
   idGenerator,
 } from './types';
+import {Constructor} from '../../ts/utils';
 
 export class Entity {
   id: EntityId;
-  components: Record<ComponentInterface['name'], ComponentInterface>;
+  components: Record<string, ComponentInterface>;
   
   constructor(idOrUidGenerator: EntityId | idGenerator, components: Array<ComponentInterface> = []) {
     if (typeof idOrUidGenerator === 'function') {
@@ -25,36 +26,28 @@ export class Entity {
   addComponent(component: ComponentInterface) {
     this.components = {
       ...this.components,
-      [component.name]: component,
+      [component.constructor.name]: component,
     };
   }
   
-  removeComponent(component: ComponentInterface) {
+  removeComponent(component: Constructor<ComponentInterface>) {
     // @ts-ignore
-    const cmp = new component;
-    
-    if (!this.components[cmp.name]) {
+    if (!this.components[component.name]) {
       return;
     }
     
-    delete this.components[cmp.name];
+    delete this.components[component.name];
   
     this.components = {...this.components};
   }
   
-  hasComponents(components: Array<ComponentInterface>) {
-    return !components.some((component) => {
-      // @ts-ignore
-      const cmp = new component;
-      
-      return !this.components[cmp.name];
+  hasComponents(Components: Array<Constructor<ComponentInterface>>) {
+    return !Components.some((Component) => {
+      return !this.components[Component.name];
     });
   }
-
-  getComponent<C>(component: ComponentInterface): C {
-    // @ts-ignore
-    const cmp = new component;
-    
-    return this.components[cmp.name] as unknown as C;
+  
+  getComponent<C extends ComponentInterface>(Component: Constructor<C>): C {
+    return this.components[Component.name] as unknown as C;
   }
 }

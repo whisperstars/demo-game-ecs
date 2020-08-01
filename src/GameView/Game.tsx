@@ -32,14 +32,14 @@ export const Game: FC = () => {
   const onMouseDown = (side: number) => {
     const world = worldRef.current;
     if (world) {
-      world.fireEvent(GameEvents.mouseDown, side);
+      world.fireEvent(GameEvents.mouseStart, side);
     }
   };
   
   const onMouseUp = () => {
     const world = worldRef.current;
     if (world) {
-      world.fireEvent(GameEvents.mouseUp, 0);
+      world.fireEvent(GameEvents.moveStop, 0);
     }
   };
   
@@ -47,9 +47,9 @@ export const Game: FC = () => {
     const world = worldRef.current;
     if (world) {
       if (e.keyCode === 37) {
-        world.fireEvent(GameEvents.mouseDown, -1);
+        world.fireEvent(GameEvents.mouseStart, -1);
       } else if (e.keyCode === 39) {
-        world.fireEvent(GameEvents.mouseDown, 1);
+        world.fireEvent(GameEvents.mouseStart, 1);
       }
     }
   };
@@ -58,9 +58,9 @@ export const Game: FC = () => {
     const world = worldRef.current;
     if (world) {
       if (e.keyCode === 37) {
-        world.fireEvent(GameEvents.mouseUp, 0);
+        world.fireEvent(GameEvents.moveStop, 0);
       } else if (e.keyCode === 39) {
-        world.fireEvent(GameEvents.mouseUp, 0);
+        world.fireEvent(GameEvents.moveStop, 0);
       }
     }
   };
@@ -79,9 +79,6 @@ export const Game: FC = () => {
             />
           ))
         }
-        {/*<Platform />
-        <Player />
-        <Ground />*/}
         <div className="tree1" />
         <div className="tree2" />
       </div>

@@ -8,7 +8,7 @@ import {PlayerSide} from '../Components/PlayerSide';
 
 export class MouseEventsSystem extends System {
   listeners = {
-    [GameEvents.mouseDown]: {
+    [GameEvents.mouseStart]: {
       test(entity: Entity) {
         return entity.hasComponents([Player]);
       },
@@ -18,7 +18,7 @@ export class MouseEventsSystem extends System {
         entity.addComponent(new PlayerSide((data as number) > 0 ? 1 : -1));
       }
     },
-    [GameEvents.mouseUp]: {
+    [GameEvents.moveStop]: {
       test(entity: Entity) {
         return entity.hasComponents([Player]);
       },

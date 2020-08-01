@@ -1,7 +1,6 @@
 import {ComponentInterface} from '../lib/types';
 
 export class Sprite implements ComponentInterface {
-  name = 'sprite';
   currentIndex: number;
   currentSpriteSetType: 'idle' | 'idleLeft' | 'idleRight' | 'moveLeft'| 'moveRight';
   

@@ -1,7 +1,6 @@
 import {ComponentInterface} from '../lib/types';
 
 export class Size implements ComponentInterface {
-  name = 'size';
   width: number;
   height: number;
   

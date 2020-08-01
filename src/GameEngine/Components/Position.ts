@@ -1,7 +1,6 @@
 import {ComponentInterface} from '../lib/types';
 
 export class Position implements ComponentInterface{
-  name = 'position';
   x: number;
   y: number;
   

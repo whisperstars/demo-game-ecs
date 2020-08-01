@@ -1,7 +1,6 @@
 import {ComponentInterface} from '../lib/types';
 
 export class Render implements ComponentInterface {
-  name = 'render';
   x: number;
   y: number;
   width: number;
