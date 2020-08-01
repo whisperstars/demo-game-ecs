@@ -1,5 +1,5 @@
-import {System} from '../lib/System';
-import {Entity} from '../lib/Entity';
+import {System} from '../../ECS_lib/System';
+import {Entity} from '../../ECS_lib/Entity';
 import {Sprite} from '../Components/Sprite';
 import {Animation} from '../Components/Animation';
 import {PlayerSide} from '../Components/PlayerSide';
@@ -10,9 +10,9 @@ export class AnimationSystem extends System {
       return true;
     } else {
       if (entity.hasComponents([Sprite])) {
-        const {sprites} = <Sprite>entity.getComponent(Sprite);
+        const {sprites} = entity.getComponent(Sprite);
         if (entity.hasComponents([PlayerSide])) {
-          const {side} = <PlayerSide>entity.getComponent(PlayerSide);
+          const {side} = entity.getComponent(PlayerSide);
           entity.addComponent(new Sprite(0, side > 0 ? 'idleRight' : 'idleLeft', sprites));
         } else {
           entity.addComponent(new Sprite(0, 'idle', sprites));
@@ -24,8 +24,8 @@ export class AnimationSystem extends System {
   }
   
   update(entity: Entity) {
-    const {currentIndex, sprites} = <Sprite>entity.getComponent(Sprite);
-    const {type} = <Animation>entity.getComponent(Animation);
+    const {currentIndex, sprites} = entity.getComponent(Sprite);
+    const {type} = entity.getComponent(Animation);
     
     if (!sprites[type]) {
       throw new Error('there isn\'t spriteSheet with type: {' + type + '}');

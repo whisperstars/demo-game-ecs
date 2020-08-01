@@ -1,4 +1,4 @@
-import {ComponentInterface} from '../lib/types';
+import {ComponentInterface} from '../../ECS_lib/types';
 
 export class Position implements ComponentInterface{
   x: number;

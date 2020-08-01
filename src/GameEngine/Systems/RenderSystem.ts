@@ -1,5 +1,5 @@
-import {System} from '../lib/System';
-import {Entity} from '../lib/Entity';
+import {System} from '../../ECS_lib/System';
+import {Entity} from '../../ECS_lib/Entity';
 import {Position} from '../Components/Position';
 import {Sprite} from '../Components/Sprite';
 import {Size} from '../Components/Size';
@@ -12,9 +12,9 @@ export class RenderSystem extends System {
   }
   
   update(entity: Entity) {
-    const {x, y} = <Position>entity.getComponent(Position);
-    const {width, height} = <Size>entity.getComponent(Size);
-    const {currentIndex, currentSpriteSetType, sprites} = <Sprite>entity.getComponent(Sprite);
+    const {x, y} = entity.getComponent(Position);
+    const {width, height} = entity.getComponent(Size);
+    const {currentIndex, currentSpriteSetType, sprites} = entity.getComponent(Sprite);
     
     // @ts-ignore
     entity.addComponent(new Render(x, y, width, height, sprites[currentSpriteSetType || 'idle'][currentIndex], entity.id));

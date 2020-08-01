@@ -13,7 +13,7 @@ body {
   }
 
   .bg {
-    background-image: url("Images/img_bg.jpg");
+    background-image: url("assets/img/game/bg.jpg");
     -moz-background-size: 100%; /* Firefox 3.6+ */
     -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
     -o-background-size: 100%; /* Opera 9.6+ */
@@ -64,7 +64,7 @@ body {
   }
 
   .el_ground {
-    background-image: url("Images/img_ground.jpg");
+    background-image: url("assets/img/game/ground.jpg");
     background-repeat: repeat-x;
     position: absolute;
     //left: 0;
@@ -90,7 +90,7 @@ body {
   }
 
   .tree1 {
-    background-image: url('./Images/tree/tree1.png');
+    background-image: url('assets/img/game/tree/tree1.png');
     left: 55px;
     top: 454px;
     width: 197px;
@@ -100,7 +100,7 @@ body {
   }
 
   .tree2 {
-    background-image: url('./Images/tree/tree2.png');
+    background-image: url('assets/img/game/tree/tree2.png');
     left: 819px;
     top: 353px;
     width: 460px;

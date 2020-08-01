@@ -1,5 +1,5 @@
-import {Engine} from './lib/Engine';
-import {Entity} from './lib/Entity';
+import {Engine} from '../ECS_lib/Engine';
+import {Entity} from '../ECS_lib/Entity';
 import {Position} from './Components/Position';
 import {Size} from './Components/Size';
 import {Sprite} from './Components/Sprite';
@@ -11,12 +11,12 @@ import {RenderSystem} from './Systems/RenderSystem';
 import {MouseEventsSystem} from './Systems/MouseEventsSystem';
 import {Player} from './Components/Player';
 
-import groundSprite from '../Images/img_ground.jpg';
-import platformSprite from '../Images/img_platform.jpg';
-import idleRight from '../Images/player/idle/player_13.png';
-import idleLeft from '../Images/player/idle/player_14.png';
-import {moveLeftSprite} from '../Sprites/Player/moveLeftSprite';
-import {moveRightSprite} from '../Sprites/Player/moveRightSprite';
+import groundSprite from '../assets/img/game/ground.jpg';
+import platformSprite from '../assets/img/game/platform.jpg';
+import idleRight from '../assets/img/game/player/idle/player_13.png';
+import idleLeft from '../assets/img/game/player/idle/player_14.png';
+import {moveLeftSprite} from '../GameView/Sprites/Player/moveLeftSprite';
+import {moveRightSprite} from '../GameView/Sprites/Player/moveRightSprite';
 import {PlayerSide} from './Components/PlayerSide';
 
 export class World {
@@ -24,7 +24,7 @@ export class World {
   interval: number | null;
   
   constructor() {
-    this.engine = new Engine;
+    this.engine = new Engine();
     this.interval = null;
   }
   

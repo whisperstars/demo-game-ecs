@@ -1,5 +1,5 @@
-import {System} from '../lib/System';
-import {Entity} from '../lib/Entity';
+import {System} from '../../ECS_lib/System';
+import {Entity} from '../../ECS_lib/Entity';
 import {Position} from '../Components/Position';
 import {Velocity} from '../Components/Velocity';
 import {Player} from '../Components/Player';
@@ -11,8 +11,8 @@ export class PositionSystem extends System {
   }
   
   update(entity: Entity) {
-    const {x, y} = <Position>entity.getComponent(Position);
-    const {value: velocity} = <Velocity>entity.getComponent(Velocity);
+    const {x, y} = entity.getComponent(Position);
+    const {value: velocity} = entity.getComponent(Velocity);
     
     entity.addComponent(new Position(x + velocity, y));
   }

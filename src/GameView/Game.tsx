@@ -5,8 +5,8 @@ import React, {
   useState,
   KeyboardEvent,
 } from 'react';
-import img_player from "../Images/arrow/left_arrow.png";
-import img_player_2 from "../Images/arrow/right_arrow.png";
+import img_player from "../assets/img/game/arrow/left_arrow.png";
+import img_player_2 from "../assets/img/game/arrow/right_arrow.png";
 import {World} from '../GameEngine/World';
 import {GameObjectView} from './GameObjectView';
 import {GameEvents} from '../GameEngine/Events/movementEvents';

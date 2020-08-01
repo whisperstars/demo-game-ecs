@@ -2,7 +2,7 @@ import {Entity} from './Entity';
 import {EntityId} from './types';
 import {fastSplice} from './utils';
 import {System} from './System';
-import {Render} from '../Components/Render';
+import {Render} from '../GameEngine/Components/Render';
 
 export class Engine {
   entities: Array<Entity>;

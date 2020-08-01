@@ -1,5 +1,5 @@
-import {System} from '../lib/System';
-import {Entity} from '../lib/Entity';
+import {System} from '../../ECS_lib/System';
+import {Entity} from '../../ECS_lib/Entity';
 import {Animation} from '../Components/Animation';
 import {Player} from '../Components/Player';
 import {GameEvents} from '../Events/movementEvents';

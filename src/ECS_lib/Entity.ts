@@ -3,7 +3,7 @@ import {
   EntityId,
   idGenerator,
 } from './types';
-import {Constructor} from '../../ts/utils';
+import {Constructor} from '../ts/utils';
 
 export class Entity {
   id: EntityId;

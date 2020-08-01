@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
-import img_player from "../Images/player/idle/player_13.png";
-import img_player_2 from "../Images/player/idle/player_14.png";
+import img_player from "../assets/img/game/player/idle/player_13.png";
+import img_player_2 from "../assets/img/game/player/idle/player_14.png";
 
 export const Player: FC = () => {
   return (
