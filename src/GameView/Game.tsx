@@ -5,12 +5,13 @@ import React, {
   useState,
   KeyboardEvent,
 } from 'react';
-import img_player from "../assets/img/game/arrow/left_arrow.png";
-import img_player_2 from "../assets/img/game/arrow/right_arrow.png";
 import {World} from '../GameEngine/World';
 import {GameObjectView} from './GameObjectView';
 import {GameEvents} from '../GameEngine/Events/movementEvents';
 import {Render} from '../GameEngine/Components/Render';
+
+import left_arrow from "../assets/img/game/arrow/left_arrow.png";
+import right_arrow from "../assets/img/game/arrow/right_arrow.png";
 
 export const Game: FC = () => {
   const [gameObjects, setGameObjects] = useState<Array<Render>>([]);
@@ -84,8 +85,8 @@ export const Game: FC = () => {
         <div className="tree2" />
       </div>
       <div className='el_arrows'>
-        <img src={img_player} className='l_arrow' onMouseDown={() => onMouseDown(-1)} onMouseUp={onMouseUp} alt='left'/>
-        <img src={img_player_2} className='r_arrow' onMouseDown={() => onMouseDown(1)} onMouseUp={onMouseUp} alt='right'/>
+        <img src={left_arrow} className='l_arrow' onMouseDown={() => onMouseDown(-1)} onMouseUp={onMouseUp} alt='left'/>
+        <img src={right_arrow} className='r_arrow' onMouseDown={() => onMouseDown(1)} onMouseUp={onMouseUp} alt='right'/>
       </div>
     </div>
   );
