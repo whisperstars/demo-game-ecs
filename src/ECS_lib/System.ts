@@ -1,7 +1,7 @@
 import {Entity} from './Entity';
-import {SystemInterface} from './types';
 
-export class System implements SystemInterface {
+//TODO: add more methods - enter, leave
+export class System {
   entities: Array<Entity>;
   listeners?: Record<string, {test?: (entity: Entity) => boolean, callback: <D>(entity: Entity, data: D) => void}>;
   

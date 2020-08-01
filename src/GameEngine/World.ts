@@ -17,7 +17,13 @@ import idleRight from '../assets/img/game/player/idle/player_13.png';
 import idleLeft from '../assets/img/game/player/idle/player_14.png';
 import {moveLeftSprite} from '../GameView/Sprites/Player/moveLeftSprite';
 import {moveRightSprite} from '../GameView/Sprites/Player/moveRightSprite';
-import {PlayerSide} from './Components/PlayerSide';
+import {
+  PlayerTurn,
+  PlayerTurnType,
+} from './Components/PlayerTurn';
+import {Render} from './Components/Render';
+
+const fps = 100;
 
 export class World {
   engine: Engine;
@@ -55,7 +61,7 @@ export class World {
       }),
       new Solid(),
       new Player(),
-      new PlayerSide(1),
+      new PlayerTurn(PlayerTurnType.Right),
     ]);
     
     this.engine.addEntity(groundEntity);
@@ -68,20 +74,20 @@ export class World {
     this.engine.addSystem(new MouseEventsSystem());
   }
   
-  start(onUpdate: (entities: Array<{width: number, height: number, x: number, y: number, sprite: string, id: string}>) => void) {
+  start(onUpdate: (entities: Array<Render>) => void) {
     if (this.interval) {
       return;
     }
     
-    // @ts-ignore
-    this.interval = setInterval(() => {
+    this.interval = window.setInterval(() => {
       this.engine.update();
       onUpdate(this.engine.getEntitiesForRender());
-    }, 100);
+    }, fps);
   }
   
   stop() {
     this.interval && clearInterval(this.interval);
+    // TODO: implement stop
   }
   
   fireEvent(event: GameEvents, data: unknown) {

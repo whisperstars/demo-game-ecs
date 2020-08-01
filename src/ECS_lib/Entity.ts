@@ -1,21 +1,15 @@
 import {
   ComponentInterface,
   EntityId,
-  idGenerator,
 } from './types';
-import {Constructor} from '../ts/utils';
+import {Constructor} from '../ts/types';
 
 export class Entity {
   id: EntityId;
   components: Record<string, ComponentInterface>;
   
-  constructor(idOrUidGenerator: EntityId | idGenerator, components: Array<ComponentInterface> = []) {
-    if (typeof idOrUidGenerator === 'function') {
-      this.id = idOrUidGenerator();
-    } else {
-      this.id = idOrUidGenerator;
-    }
-    
+  constructor(id: EntityId, components: Array<ComponentInterface> = []) {
+    this.id = id;
     this.components = {};
     
     components.forEach((component) => {
@@ -30,13 +24,12 @@ export class Entity {
     };
   }
   
-  removeComponent(component: Constructor<ComponentInterface>) {
-    // @ts-ignore
-    if (!this.components[component.name]) {
+  removeComponent(Component: Constructor<ComponentInterface>) {
+    if (!this.components[Component.name]) {
       return;
     }
     
-    delete this.components[component.name];
+    delete this.components[Component.name];
   
     this.components = {...this.components};
   }

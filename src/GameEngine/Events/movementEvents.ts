@@ -1,4 +1,4 @@
 export enum GameEvents {
-  mouseStart = 'mouseStart',
+  moveStart = 'moveStart',
   moveStop = 'moveStop',
 }

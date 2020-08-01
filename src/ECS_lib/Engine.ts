@@ -4,6 +4,7 @@ import {fastSplice} from './utils';
 import {System} from './System';
 import {Render} from '../GameEngine/Components/Render';
 
+//TODO: implement cache mechanism
 export class Engine {
   entities: Array<Entity>;
   systems: Array<System>;

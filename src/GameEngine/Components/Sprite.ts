@@ -1,16 +1,16 @@
 import {ComponentInterface} from '../../ECS_lib/types';
+import {PartialRecord} from '../../ts/types';
+
+export type SpriteType = 'idle' | 'idleLeft' | 'idleRight' | 'moveLeft'| 'moveRight';
+export type SpriteRecord = PartialRecord<SpriteType, Array<string>>;
 
 export class Sprite implements ComponentInterface {
   currentIndex: number;
-  currentSpriteSetType: 'idle' | 'idleLeft' | 'idleRight' | 'moveLeft'| 'moveRight';
+  currentSpriteSetType: SpriteType;
   
-  sprites: {idle: Array<string>, moveLeft?: Array<string>, moveRight?: Array<string>, idleLeft?: Array<string>, idleRight?: Array<string>,};
+  sprites: SpriteRecord;
   
-  constructor(currentIndex: number, currentSpriteSetType: 'idle' | 'idleLeft' | 'idleRight'  | 'moveLeft'| 'moveRight' = 'idle', sprites: Array<string> | {idle: Array<string>, idleLeft?: Array<string>, idleRight?: Array<string>, moveLeft?: Array<string>, moveRight?: Array<string>}) {
-    /*if (!sprites[currentIndex]) {
-      throw new Error('there is no sprite with this index {' + currentIndex + '}');
-    }*/
-    
+  constructor(currentIndex: number, currentSpriteSetType: SpriteType = 'idle', sprites: Array<string> | SpriteRecord) {
     this.currentIndex = currentIndex;
     this.currentSpriteSetType = currentSpriteSetType;
     this.sprites = Array.isArray(sprites) ? {idle: sprites} : sprites;

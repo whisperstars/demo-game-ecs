@@ -1,1 +1,15 @@
-export type Constructor<T> = new (...args: any[]) => T;
+export const assertIsDefined = (value: any) => {
+  if (value === undefined) {
+    throw new Error('value is undefined');
+  }
+};
+
+export function assertNever(value: never, noThrow?: boolean): never {
+  if (noThrow) {
+    return value
+  }
+  
+  throw new Error(
+    `Unhandled discriminated union member: ${JSON.stringify(value)}`,
+  );
+}

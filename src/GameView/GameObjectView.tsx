@@ -1,11 +1,7 @@
 import React, {FC} from 'react';
+import {Render} from '../GameEngine/Components/Render';
 
-interface GameObjectViewProps {
-  x: number;
-  y: number;
-  width: number;
-  height: number;
-  sprite: string;
+interface GameObjectViewProps extends Render {
 }
 
 export const GameObjectView: FC<GameObjectViewProps> = (props) => {

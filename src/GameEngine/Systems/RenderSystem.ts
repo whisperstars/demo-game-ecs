@@ -15,8 +15,13 @@ export class RenderSystem extends System {
     const {x, y} = entity.getComponent(Position);
     const {width, height} = entity.getComponent(Size);
     const {currentIndex, currentSpriteSetType, sprites} = entity.getComponent(Sprite);
+    const spriteSet = sprites[currentSpriteSetType || 'idle'];
     
-    // @ts-ignore
-    entity.addComponent(new Render(x, y, width, height, sprites[currentSpriteSetType || 'idle'][currentIndex], entity.id));
+    // TODO: find better solution to get sprite
+    if (!spriteSet) {
+      throw new Error('There isn\'t spriteSet with type: ' + currentSpriteSetType);
+    }
+    
+    entity.addComponent(new Render(x, y, width, height, spriteSet[currentIndex], entity.id));
   }
 }

@@ -10,9 +10,10 @@ import img_player_2 from "../assets/img/game/arrow/right_arrow.png";
 import {World} from '../GameEngine/World';
 import {GameObjectView} from './GameObjectView';
 import {GameEvents} from '../GameEngine/Events/movementEvents';
+import {Render} from '../GameEngine/Components/Render';
 
 export const Game: FC = () => {
-  const [gameObjects, setGameObjects] = useState<Array<{width: number, height: number, x: number, y: number, sprite: string, id: string}>>([]);
+  const [gameObjects, setGameObjects] = useState<Array<Render>>([]);
   const worldRef = useRef<World>();
   
   useEffect(() => {
@@ -32,7 +33,7 @@ export const Game: FC = () => {
   const onMouseDown = (side: number) => {
     const world = worldRef.current;
     if (world) {
-      world.fireEvent(GameEvents.mouseStart, side);
+      world.fireEvent(GameEvents.moveStart, side);
     }
   };
   
@@ -47,9 +48,9 @@ export const Game: FC = () => {
     const world = worldRef.current;
     if (world) {
       if (e.keyCode === 37) {
-        world.fireEvent(GameEvents.mouseStart, -1);
+        world.fireEvent(GameEvents.moveStart, -1);
       } else if (e.keyCode === 39) {
-        world.fireEvent(GameEvents.mouseStart, 1);
+        world.fireEvent(GameEvents.moveStart, 1);
       }
     }
   };
@@ -72,10 +73,10 @@ export const Game: FC = () => {
         <div className="tree1" style={{left: 1270, top: 380, transform: 'rotate(8deg)', width: 300, opacity: 0.8}}/>
         <div className="tree1" style={{left: 1265, top: 440, transform: 'rotate(-12deg)', width: 270, opacity: 0.8}}/>
         {
-          gameObjects.map(({id, ...other}) => (
+          gameObjects.map((gameObject) => (
             <GameObjectView
-              key={id}
-              {...other}
+              key={gameObject.id}
+              {...gameObject}
             />
           ))
         }

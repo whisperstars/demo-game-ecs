@@ -16,13 +16,3 @@ export function fastSplice<T>(array: Array<T>, startIndex: number, removeCount: 
   
   array.length = removeLen;
 }
-
-export function assertNever(value: never, noThrow?: boolean): never {
-  if (noThrow) {
-    return value
-  }
-  
-  throw new Error(
-    `Unhandled discriminated union member: ${JSON.stringify(value)}`,
-  );
-}
