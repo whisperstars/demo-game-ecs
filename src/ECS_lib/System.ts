@@ -3,7 +3,7 @@ import {Entity} from './Entity';
 //TODO: add more methods - enter, leave, GlobalSystem globalUpdate{entity, entities[filtered by global test]}
 export class System {
   entities: Array<Entity>;
-  listeners?: Record<string, {test?: (entity: Entity) => boolean, callback: <D>(entity: Entity, data: D) => void}>;
+  listeners?: Record<string, {test: (entity: Entity) => boolean, callback: <D>(entity: Entity, data: D) => void}>;
   
   constructor() {
     this.entities = [];

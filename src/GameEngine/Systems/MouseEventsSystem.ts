@@ -15,6 +15,7 @@ export class MouseEventsSystem extends System {
       test(entity: Entity) {
         return entity.hasComponents([Player]);
       },
+      // TODO: find the solution for types fixing
       callback(entity: Entity, data: unknown) {
         entity.addComponent(new Velocity(20 * (data as number)));
         entity.addComponent(new Animation((data as number) > 0 ? 'moveRight' : 'moveLeft'));
